@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GroceriesController;
 use App\Http\Controllers\siteController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,5 +36,7 @@ Route::get('/', [GroceriesController::class, 'index'])->name("home");
 Route::get('/shop', [GroceriesController::class, 'shop'])->name("shop");
 Route::get('/register', [GroceriesController::class, 'register'])->name("register");
 Route::get('/login', [GroceriesController::class, 'login'])->name("login");
-
+Route::get('/detail_product/{id_product}', [GroceriesController::class, 'detail_product'])->name("detail_product");
+//Route::get('/contact', [GroceriesController::class, 'contact']) ->name('contact');
+Route::resource('contact', ContactController::class);
 
