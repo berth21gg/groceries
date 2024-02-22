@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Mail\ContactMailable;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -46,6 +48,8 @@ class ContactController extends Controller
             $contact->fullname = $request->input('fullname');
             $contact->email = $request->input('email');
             $contact->message = $request->input('message');
+            //Envia el correo a la dirección especificada y utiliza la clase Contact Mailable con la información de contacto
+            Mail::to('bernardoth@gmail.com')->send(new ContactMailable($contact));
             $contact->save();
             return redirect()->route('contact.index')->with('success', 'Your message has been sent.');
         }
