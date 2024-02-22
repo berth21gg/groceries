@@ -105,7 +105,7 @@
 
                     <section>
                         <div>
-                            <h3 class="title font-weight-normal mt-0 text-left">COMMENTS SECTION</h3>
+                            <h3 class="title font-weight-normal mt-0 text-left">LEAVE A COMMENT</h3>
                             <form data-aos="fade-left" data-aos-duration="1200" action="{{ route('comment.store') }}"
                                 method="POST">
                                 @csrf
@@ -130,7 +130,7 @@
                                     <!-- mandar id del producto -->
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <div class="col-lg-12 text-right">
-                                        <button type="submit" class="btn btn-lg btn-primary mb-5">Leave a comment</button>
+                                        <button type="submit" class="btn btn-lg btn-primary mb-5">Post comment</button>
                                     </div>
                                 </div>
                                 @if (session()->get('success'))
@@ -149,7 +149,7 @@
                                 @endif
                             </form>
                             <div style="height: 200px; overflow: auto; border: 1px solid #ccc; padding: 10px">
-                                <h4 class="title font-weight-normal mt-0 text-left" style="margin-bottom: 1rem">COMMENTS</h4>
+                                <h4 class="title font-weight-normal mt-0 text-left" style="margin-bottom: 1rem">COMMENTS ({{ $commentsCount }})</h4>
                                 <dl>
                                     @foreach ($comments as $c)
                                         <dt>{{ $c->fullname }} - {{ $c->updated_at->format('d/m/Y') }}</dt>

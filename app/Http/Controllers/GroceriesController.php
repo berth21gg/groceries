@@ -38,13 +38,15 @@ class GroceriesController extends Controller
         $product = Product::find($id_product);
         // Obtener todo los comentarios
         $comments = Comment::where('product_id', $id_product)->get();
+        //Contar los comentario
+        $commentsCount = $comments->count();
 
         //verifica si el producto existe
         if(!$product){
             abort(404);
         }
 
-        return view("groceries.detail_product", compact('products', 'product', 'comments'));
+        return view("groceries.detail_product", compact('products', 'product', 'comments', 'commentsCount'));
     }
 
     /*public function contact(){
