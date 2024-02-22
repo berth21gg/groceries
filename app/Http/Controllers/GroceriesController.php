@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -35,13 +36,15 @@ class GroceriesController extends Controller
         $products = Product::all();
         // Obtener el producto especifico
         $product = Product::find($id_product);
+        // Obtener todo los comentarios
+        $comments = Comment::where('product_id', $id_product)->get();
 
         //verifica si el producto existe
         if(!$product){
             abort(404);
         }
 
-        return view("groceries.detail_product", compact('products', 'product'));
+        return view("groceries.detail_product", compact('products', 'product', 'comments'));
     }
 
     /*public function contact(){

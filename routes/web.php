@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GroceriesController;
 use App\Http\Controllers\siteController;
@@ -39,4 +40,5 @@ Route::get('/login', [GroceriesController::class, 'login'])->name("login");
 Route::get('/detail_product/{id_product}', [GroceriesController::class, 'detail_product'])->name("detail_product");
 //Route::get('/contact', [GroceriesController::class, 'contact']) ->name('contact');
 Route::resource('contact', ContactController::class);
+Route::resource('comment', CommentController::class);
 
