@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GroceriesController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\siteController;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,9 @@ Route::get('/register', [GroceriesController::class, 'register'])->name("registe
 Route::get('/login', [GroceriesController::class, 'login'])->name("login");
 Route::get('/detail_product/{id_product}', [GroceriesController::class, 'detail_product'])->name("detail_product");
 //Route::get('/contact', [GroceriesController::class, 'contact']) ->name('contact');
+
+Route::get('/admin/products', [ProductController::class, 'index'])->name("admin.products.index");
+
 Route::resource('contact', ContactController::class);
 Route::resource('comment', CommentController::class);
 
